@@ -1,1 +1,2 @@
-import './js/index'
+import './js/pixabay-api'
+import './js/render-functions'
