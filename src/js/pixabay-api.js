@@ -73,7 +73,7 @@ async function onSearchMore (){
 
 }
 
-console.log()
+// console.log
 
 function showSearch() {
   loadElem.classList.add('hidden');

@@ -29,7 +29,9 @@ picContAdd.addEventListener('click', onSearchMore)
 
 
 
- input.addEventListener('submit', async e =>{
+input.addEventListener('submit', onFormSubmit)
+
+async function onFormSubmit(e){
   e.preventDefault();
   document.getElementById("loader").style.display = "flex";
   const name = e.target.elements.form.value.trim();
@@ -41,15 +43,14 @@ picContAdd.addEventListener('click', onSearchMore)
   return;
 }
 
- const  data = await searchPicture(name);
+  const data = await searchPicture();
     document.getElementById("loader").style.display = "none";
     showSearch();
     renderPicture(data);
     gallery.refresh();
-
   e.target.reset();
   picCont.innerHTML = "";
-});
+};
 
 async function searchPicture(pixabay){
    q =`${pixabay}`;
@@ -73,7 +74,7 @@ async function onSearchMore (){
 
 }
 
-console.log(currentPage)
+console.log()
 
 function showSearch() {
   loadElem.classList.add('hidden');
