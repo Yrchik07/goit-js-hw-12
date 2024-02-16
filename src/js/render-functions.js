@@ -2,6 +2,8 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 import { picCont } from "./pixabay-api";
+import { hideSearch } from "./pixabay-api";
+
 
 function pictureTemplate({webformatURL,largeImageURL,tags,likes,views,comments,downloads}){
   return `<li class="gallery-item">
@@ -38,6 +40,7 @@ function picturesTemplate(picture){
       backgroundColor: '#B51B1B',
       position: 'topRight',
     });
+    hideSearch();
     return;
   }else{
     return pictureProm;
