@@ -12,19 +12,21 @@
       <input name="form" type="text" placeholder="Search images...">
       <button type="submit">Search</button>
     </form>
+    <div class="serch is-open" id="loader">
+      <h2>Loading images, please wait...</h2>
+      <span class="loader"></span>
+    </div>
 
-  <div class="serch is-open" id="loader">
-    <h2>Loading images, please wait...</h2>
-    <span class="loader"></span>
-  </div>
 </div>
 
   <ul class="gallery"></ul>
 
     <button class="picture_load js_picture_load hidden" type="button">
-      <!-- <div class="spinner-border js-loader" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div> -->
+      <div class="serch is-open" id="loader">
+        <h2>Loading images, please wait...</h2>
+        <span class="loader"></span>
+      </div>
+
            <span class="label">Load more</span>
     </button>
 

@@ -1,4 +1,6 @@
 import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
 import { picCont } from "./pixabay-api";
 
 function pictureTemplate({webformatURL,largeImageURL,tags,likes,views,comments,downloads}){
@@ -26,10 +28,9 @@ function pictureTemplate({webformatURL,largeImageURL,tags,likes,views,comments,d
     </ul>
 </li> `; }
 
+
 function picturesTemplate(picture){
-
   let  pictureProm = picture.hits.map(pictureTemplate).join('');
-
   if(pictureProm.length === 0){
     iziToast.show({
       message: 'Sorry, there are no images matching your search query. Please try again!',
@@ -39,7 +40,7 @@ function picturesTemplate(picture){
     });
     return;
   }else{
-    return pictureProm ;
+    return pictureProm;
   }
 }
 
