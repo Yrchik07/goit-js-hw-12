@@ -6,7 +6,7 @@
   <title>Document</title>
   
   <script type="module" crossorigin src="/goit-js-hw-12/commonHelpers.js"></script>
-  <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-92f1aa52.js">
+  <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-5401a4b0.js">
   <link rel="stylesheet" href="/goit-js-hw-12/assets/vendor-cf6910df.css">
   <link rel="stylesheet" href="/goit-js-hw-12/assets/index-cc611eaf.css">
 </head>
@@ -16,19 +16,21 @@
       <input name="form" type="text" placeholder="Search images...">
       <button type="submit">Search</button>
     </form>
+    <div class="serch is-open" id="loader">
+      <h2>Loading images, please wait...</h2>
+      <span class="loader"></span>
+    </div>
 
-  <div class="serch is-open" id="loader">
-    <h2>Loading images, please wait...</h2>
-    <span class="loader"></span>
-  </div>
 </div>
 
   <ul class="gallery"></ul>
 
     <button class="picture_load js_picture_load hidden" type="button">
-      <!-- <div class="spinner-border js-loader" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div> -->
+      <div class="serch is-open" id="loader">
+        <h2>Loading images, please wait...</h2>
+        <span class="loader"></span>
+      </div>
+
            <span class="label">Load more</span>
     </button>
 
