@@ -13,7 +13,7 @@ const input = document.querySelector('.js-search-form');
 
 let currentPage = 1;
 let nameSearch = '';
-let PER_PAGE = 200;
+let PER_PAGE = 15;
 let namHits;
 let heightScrol;
 
