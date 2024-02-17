@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="./css/styles.css" rel="stylesheet">
-</head>
-<body>
-  <div class="box">
-    <form class="form_serch js-search-form">
-      <input name="form" type="text" placeholder="Search images...">
-      <button type="submit">Search</button>
-    </form>
-    <div class="serch is-open" id="loader">
-      <h2>Loading images, please wait...</h2>
-      <span class="loader"></span>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="box">
+        <form class="form_serch js-search-form">
+          <input name="form" type="text" placeholder="Search images...">
+          <button type="submit">Search</button>
+        </form>
     </div>
 
-</div>
+      <ul class="gallery"></ul>
 
-  <ul class="gallery"></ul>
-<div>
-  <button class="picture_load js_picture_load hidden" type="button">
-    <span class="label">Load more</span>
-</button>
-<div class="serch is-open " id="loader_serch">
- <h2>Loading images, please wait...</h2>
- <span class="loader"></span>
-</div>
+    <div>
+      <button class="picture_load js_picture_load hidden" type="button">
+        <span class="label">Load more</span>
+      </button>
+      <div class="serch is-open " id="loader_serch">
+        <h2>Loading images, please wait...</h2>
+        <span class="loader"></span>
+      </div>
+    </div>
 
-</div>
-
-  <script src="./main.js" type="module"></script>
-</body>
+      <script src="./main.js" type="module"></script>
+  </body>
 </html>

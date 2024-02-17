@@ -5,12 +5,12 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import axios from 'axios';
 import { renderPicture } from "./render-functions";
 
-const picContAdd = document.querySelector('.js_picture_load');
-const loadElemLast = document.getElementById("loader_serch");
-
 export const picCont = document.querySelector('.gallery')
 
+const picContAdd = document.querySelector('.js_picture_load');
+const loadElemLast = document.getElementById("loader_serch");
 const input = document.querySelector('.js-search-form');
+
 let currentPage = 1;
 let nameSearch = '';
 let PER_PAGE = 200;
@@ -37,11 +37,11 @@ async function onFormSubmit(e){
     try {
       const data = await searchPicture();
       namberHits = data.totalHits;
-      checkBtnStatus();
       renderPicture(data);
       gallery.refresh();
     } catch (error) {
       noSearch();
+      e.target.reset();
       console.error('Error retrieving image link:', error);
     }
     const elementImage = document.querySelector('.gallery-item');
@@ -50,8 +50,7 @@ async function onFormSubmit(e){
     heightScrol = heightElement + heightElement;
     namHits = namberHits;
     e.target.reset();
-showSearch()
-
+    checkBtnStatus();
 };
 
 
@@ -68,8 +67,6 @@ async function searchPicture(){
     per_page: PER_PAGE,
   });
   const url = BASE_URL;
-
-
    try{
      const res = await axios.get(url, {params});
      return res.data;
@@ -80,15 +77,10 @@ async function searchPicture(){
 
 
 async function onSearchMore (){
-  hideSearch();
-
-  document.getElementById("loader").style.display = "flex";
   currentPage += 1;
-  checkBtnStatus();
-
+  hideSearch();
   try {
     const data = await searchPicture();
-    document.getElementById("loader").style.display = "none";
     renderPicture(data);
     gallery.refresh();
   } catch (error) {
@@ -98,7 +90,7 @@ async function onSearchMore (){
     top: `${heightScrol}`,
     behavior: 'smooth',
   });
-  // showSearch()
+  checkBtnStatus();
 }
 
 function checkBtnStatus() {
@@ -112,7 +104,7 @@ function checkBtnStatus() {
       position: 'topRight',
     });
     noButton();
-    // noSearch();
+    noSearch();
   } else {
     showSearch();
   }
@@ -129,16 +121,9 @@ export function hideSearch() {
 }
 function noSearch(){
   loadElemLast.classList.add('is-open')
-
 }
 function noButton(){
   picContAdd.classList.add('hidden');
-
 }
 
 const gallery = new SimpleLightbox('.gallery a', {captionDelay: 250, captionsData: 'alt'});
-
-// showSearch()
-// hideSearch()
-// noSearch()
-// noButton()
