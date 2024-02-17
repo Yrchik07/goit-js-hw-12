@@ -40,7 +40,7 @@ function picturesTemplate(picture){
       backgroundColor: '#B51B1B',
       position: 'topRight',
     });
-    hideSearch();
+    noSearch();
     return;
   }else{
     return pictureProm;

@@ -6,7 +6,6 @@ import axios from 'axios';
 import { renderPicture } from "./render-functions";
 
 const picContAdd = document.querySelector('.js_picture_load');
-const loadElem = document.getElementById("loader");
 const loadElemLast = document.getElementById("loader_serch");
 
 export const picCont = document.querySelector('.gallery')
@@ -14,7 +13,7 @@ export const picCont = document.querySelector('.gallery')
 const input = document.querySelector('.js-search-form');
 let currentPage = 1;
 let nameSearch = '';
-let PER_PAGE = 15;
+let PER_PAGE = 200;
 let namHits;
 let heightScrol;
 
@@ -24,14 +23,14 @@ picContAdd.addEventListener('click', onSearchMore);
 
 async function onFormSubmit(e){
       e.preventDefault();
-      document.getElementById("loader").style.display = "flex";
+      hideSearch();
       nameSearch = e.target.elements.form.value.trim();
       picCont.innerHTML = "";
       currentPage = 1;
       if(nameSearch === ''){
       e.target.reset();
       picCont.innerHTML = "";
-      document.getElementById("loader").style.display = "none";
+      noSearch();
         return;
     }
     let namberHits;
@@ -39,10 +38,10 @@ async function onFormSubmit(e){
       const data = await searchPicture();
       namberHits = data.totalHits;
       checkBtnStatus();
-      document.getElementById("loader").style.display = "none";
       renderPicture(data);
       gallery.refresh();
     } catch (error) {
+      noSearch();
       console.error('Error retrieving image link:', error);
     }
     const elementImage = document.querySelector('.gallery-item');
@@ -51,6 +50,7 @@ async function onFormSubmit(e){
     heightScrol = heightElement + heightElement;
     namHits = namberHits;
     e.target.reset();
+showSearch()
 
 };
 
@@ -98,7 +98,7 @@ async function onSearchMore (){
     top: `${heightScrol}`,
     behavior: 'smooth',
   });
-  showSearch()
+  // showSearch()
 }
 
 function checkBtnStatus() {
@@ -111,7 +111,8 @@ function checkBtnStatus() {
       backgroundColor: '#1bb5b0',
       position: 'topRight',
     });
-  hideSearch();
+    noButton();
+    // noSearch();
   } else {
     showSearch();
   }
@@ -126,7 +127,18 @@ export function hideSearch() {
   loadElemLast.classList.remove('is-open')
   picContAdd.classList.add('hidden');
 }
+function noSearch(){
+  loadElemLast.classList.add('is-open')
 
+}
+function noButton(){
+  picContAdd.classList.add('hidden');
+
+}
 
 const gallery = new SimpleLightbox('.gallery a', {captionDelay: 250, captionsData: 'alt'});
 
+// showSearch()
+// hideSearch()
+// noSearch()
+// noButton()
